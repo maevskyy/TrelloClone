@@ -12,11 +12,11 @@ const InfoModal = ({ visible, setVisible, count }) => {
 
   useEffect(()=> {
     if(visible){
-      console.log('все правильно');  
+      console.log('все правильно')
     }
   }, [])
 
-  console.log(`${visible} это визибл`);
+  console.log(`${visible} это визибл`)
   console.log(randomTip);
 
 
