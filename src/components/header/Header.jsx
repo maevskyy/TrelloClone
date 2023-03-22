@@ -28,9 +28,6 @@ const Header = () => {
   });
   const [notificModal, setNotificModal] = useState(false);
 
-
-console.log(infoModal)
-
   const handlerFilterSearch = (event) => {
     setFilterSearch(event.target.value);
   };
@@ -116,6 +113,7 @@ console.log(infoModal)
           <InfoModal
               visible={infoModal.condition}
               setVisible={infoModalHandler}
+              count = {infoModal.countClick}
           />
         )}
         <Tooltip title="Notifications">

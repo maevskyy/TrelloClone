@@ -10,14 +10,18 @@ const InfoModal = ({ visible, setVisible, count }) => {
     text: dataInfo[2].text,
   });
 
-  useEffect(()=> {
-    if(visible){
-      console.log('все правильно')
-    }
-  }, [])
 
-  console.log(`${visible} это визибл честное слово`)
-  console.log(randomTip);
+useEffect(() => {
+  if(count > 1){
+    const {id, img, text} = dataInfo[Math.floor(Math.random() * dataInfo.length)]
+    setRandomTip(prevEl => ({
+      id,
+      img,
+      text,
+    }))
+}
+},[visible])
+
 
 
 
@@ -66,9 +70,3 @@ const InfoModal = ({ visible, setVisible, count }) => {
 
 export default InfoModal;
 
-      // const {id, img, text} = dataInfo[Math.floor(Math.random() * dataInfo.length)]
-      // setRandomTip(prevEl => ({
-      //   id,
-      //   img,
-      //   text,
-      // }))
