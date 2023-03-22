@@ -16,7 +16,7 @@ const InfoModal = ({ visible, setVisible, count }) => {
     }
   }, [])
 
-  console.log(`${visible} это визибл`)
+  console.log(`${visible} это визибл честное слово`)
   console.log(randomTip);
 
 
