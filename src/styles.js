@@ -1,6 +1,8 @@
 const styles = {
     padding: "px-5 py-2",
     searchBackLights: "transition ease-in-out delay-150 bg-gray-400/50 rounded-full",
+    iconShape: "w-[1.2em] h-[1.2em]",
+    userSelect: " user"
 //     heroHeadText:
 //     "font-black text-white lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2",
 //   heroSubText:

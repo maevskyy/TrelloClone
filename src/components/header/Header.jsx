@@ -21,10 +21,10 @@ const Header = () => {
     <FaUserCircle className="w-[2em] h-[2em] hover:cursor-pointer" />
   );
 
-//!о госпади блять
+  //!о госпади блять
   const [infoModal, setInfoModal] = useState({
     countClick: 0,
-    condition: false, 
+    condition: false,
   });
   const [notificModal, setNotificModal] = useState(false);
 
@@ -33,17 +33,15 @@ const Header = () => {
   };
 
   const infoModalHandler = () => {
-    
-    setInfoModal(prev => ({
+    setInfoModal((prev) => ({
       countClick: prev.countClick + 1,
-      condition: !prev.condition
-    }))
+      condition: !prev.condition,
+    }));
 
     if (notificModal) {
       setNotificModal((notificModal) => !notificModal);
     }
   };
-
 
   const notificModalHandler = () => {
     setNotificModal((notificModal) => !notificModal);
@@ -61,7 +59,7 @@ const Header = () => {
         >
           <img
             src={logo}
-            className="w-20"
+            className="w-20 select-none"
             alt=""
           />
         </a>
@@ -73,8 +71,9 @@ const Header = () => {
           <img
             src={boardMark}
             alt=""
+            className='select-none'
           />
-          <h3 className="">Boards</h3>
+          <h3 className="select-none">Boards</h3>
         </a>
         <div className=" border-r-2 h-7"></div>
         <div className="relative border  rounded-full w-[20em] h-[1.875em]">
@@ -110,10 +109,10 @@ const Header = () => {
           </div>
         </Tooltip>
         {infoModal && (
-          <InfoModal
-              visible={infoModal.condition}
-              setVisible={infoModalHandler}
-              count = {infoModal.countClick}
+          <InfoModal  
+            visible={infoModal.condition}
+            setVisible={infoModalHandler}
+            count={infoModal.countClick}
           />
         )}
         <Tooltip title="Notifications">

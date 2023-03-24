@@ -8,24 +8,24 @@ export default [
     id: 1,
     img: img1,
     text: 'Get inspired by the many different ways to use Trello',
-    link: '',
+    link: 'https://trello.com/templates',
   },
   {
     id: 2,
     img: img2,
     text: 'Improve your boards with Trello enhancements',
-    link: '',
+    link: 'https://trello.com/power-ups?utm_source=trello&utm_medium=inapp&utm_content=header-tips&utm_campaign=power-ups',
   },
   {
     id: 3,
     img: img3,
     text: 'New to Trello? Check out the tutorial',
-    link: '',
+    link: 'https://trello.com/guide?utm_source=trello&utm_medium=inapp&utm_content=header-tips&utm_campaign=guide',
   },
   {
     id: 4,
     img: img4,
     text: 'Getting your team ready to work productively with Trello is easy - use our scripting collections to do it',
-    link: '',
+    link: 'https://trello.com/teams?utm_source=trello&utm_medium=inapp&utm_content=header-tips&utm_campaign=playbooks',
   },
 ];
