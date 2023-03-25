@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from './components/header/Header';
-import Main from './components/main/Main'
-
+import Main from './components/main/Main';
 
 const App = () => {
 
-
-
   return (
     <div className="font-Poppins ">
-        <Header/>
+      <Header/>
       <div className="border"></div>
       <Main/>
-
-
-
+      
     </div>
-
-
   );
 };
 
