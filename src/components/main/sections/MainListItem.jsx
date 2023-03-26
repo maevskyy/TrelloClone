@@ -5,7 +5,7 @@ import { styles } from '../../../styles';
 import { AiOutlinePlus, AiOutlineClose } from 'react-icons/ai';
 import { GoKebabVertical } from 'react-icons/go';
 
-import MainCardsList from './cardSection/MainCardsList';
+import MainCardItem from './cardSection/MainCardItem';
 
 const MainListItem = (props) => {
   const [createListCard, setCreateListCard] = useState(false);
@@ -13,18 +13,18 @@ const MainListItem = (props) => {
     title: '',
     condition:'',
   });
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([  ]);
 
-  console.log(card);
+  console.log(cards);
 
-  const removeCard = (oneCard) => {
-    setCards(cards.filter(el => el.id !== oneCard.id))
+  const createCard = () => {
+    const newCard = {
+      ...card,
+      id: Date.now()
+    }
+    setCards([...cards, newCard])
+    setCard({title: '', condition: ''})
   }
-
-  const createCard = (newCard) => {
-    setCards([...cards, newCard]);
-    setCreateListCard(false);
-  };
 
   
 
@@ -38,11 +38,9 @@ const MainListItem = (props) => {
         </div>
       </div>
 
-      <MainCardsList
-        card={card}
-        cards={cards}
-        remove={removeCard}
-      />
+      {cards.map((el) => 
+        <MainCardItem key={el.id} title={el.title}/>
+      )}
 
       {createListCard ? (
         <div className={`w-full mt-3 rounded-sm `}>

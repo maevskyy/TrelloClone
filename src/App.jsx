@@ -10,7 +10,9 @@ const App = () => {
       <Header/>
       <div className="border"></div>
       <Main/>
-      
+
+    
+
     </div>
   );
 };
