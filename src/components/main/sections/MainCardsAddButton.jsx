@@ -4,7 +4,7 @@ import { styles } from '../../../styles';
 
 import { AiOutlinePlus, AiOutlineClose } from 'react-icons/ai';
 
-const MainCardsAddButton = ({ createList, setCreateCard, createCard }) => {
+const MainCardsAddButton = ({ createList, setCreateLists, createLists }) => {
 
   const [listInfo, setListInfo] = useState({
     title: '',
@@ -22,24 +22,24 @@ const MainCardsAddButton = ({ createList, setCreateCard, createCard }) => {
   }
 
   const closeHandler = () => {
-    setCreateCard(createCard => !createCard)
+    setCreateLists(createLists => !createLists)
   }
 
 
 
   return (
     <div>
-      {createCard ? (
-        <div className={`w-[14em] border p-2 rounded-sm bg-black/10 shadow-md`}>
+      {createLists ? (
+        <div className={`w-[17em]  p-[0.35em] rounded-sm bg-black/5 shadow-md`}>
           <input
-            className=" w-full border-blue-300 border-2 outline-none px-2 py-1 text-sm rounded-sm mb-1"
-            placeholder="Name of the card"
+            className=" w-full border-blue-500 border-2 outline-none px-2 py-1 text-sm rounded-sm mb-1"
+            placeholder="List name"
             onChange={e => setListInfo({...listInfo, title: e.target.value})}
             value={listInfo.title}
           />
           <div className="flex gap-2 ">
             <button
-              className="bg-blue-300 px-2 py-1 text-sm rounded-sm text-black/60"
+              className="bg-blue-500 text-white px-2 py-1 text-sm  font-medium rounded-sm text-black/60"
               onClick={listInfo.title === '' ? null : handlerFunc}
             >
               Create
@@ -55,7 +55,7 @@ const MainCardsAddButton = ({ createList, setCreateCard, createCard }) => {
           className={`${styles.searchBackLights} w-[14em] bg-black/10 hover:bg-black/5 hover:text-black/80 py-2 px-5 rounded-sm text-black/60 flex items-center gap-1 shadow-md`}
         >
           <AiOutlinePlus />
-          Add new one
+          Add new list
         </button>
       )}
       

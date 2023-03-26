@@ -5,35 +5,37 @@ import MainCardsAddButton from './MainCardsAddButton';
 import MainLists from './MainLists';
 
 const MainCards = () => {
-  const [createCard, setCreateCard] = useState(false);
+  const [createLists, setCreateLists] = useState(false);
 
   const [lists, setLists] = useState([
 
-      {title: 'First Post', body: '', id: 1},
-      {title: 'Second Post', body: '', id: 2}
+      {title: 'First Post', body: '', id: 1, cards: []},
+      {title: 'Second Post', body: '', id: 2, cards: []}
 
 
   ]);
 
   const createList = (newList) => {
     setLists([...lists, newList]);
-    setCreateCard(false);
+    setCreateLists(false);
   };
 
-  console.log(lists);
+  const removeList = (oneList) => {
+    setLists(lists.filter(el => el.id !== oneList.id))
+  }
+
 
   return (
     <div className="mt-8 flex gap-2">
       <MainLists
-        // remove={removePost}
-        // post={sortedAndSearchedPosts}
         lists={lists}
+        remove={removeList}
       />
 
       <MainCardsAddButton
         createList={createList}
-        createCard={createCard}
-        setCreateCard={setCreateCard}
+        createLists={createLists}
+        setCreateLists={setCreateLists}
       />
     </div>
   );
