@@ -15,6 +15,8 @@ const MainCards = () => {
 
   ]);
 
+  console.log(lists);
+
   const createList = (newList) => {
     setLists([...lists, newList]);
     setCreateLists(false);

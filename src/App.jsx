@@ -6,7 +6,7 @@ import Main from './components/main/Main';
 const App = () => {
 
   return (
-    <div className="font-Poppins bg-gray-700/50 h-[100vh]">
+    <div className="font-Poppins ">
       <Header/>
       <div className="border"></div>
       <Main/>
