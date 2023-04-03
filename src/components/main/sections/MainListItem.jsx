@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 
 import { styles } from '../../../styles';
 
@@ -7,40 +7,44 @@ import { GoKebabVertical } from 'react-icons/go';
 
 import MainCardItem from './cardSection/MainCardItem';
 
-const MainListItem = (props) => {
+const MainListItem = ({ el, remove, create, removeCard }) => {
   const [createListCard, setCreateListCard] = useState(false);
   const [card, setCard] = useState({
     title: '',
-    condition:'',
+    condition: false,
   });
-  const [cards, setCards] = useState([  ]);
 
-  console.log(cards);
+  // const [cards, setCards] = useState([]);
 
   const createCard = () => {
     const newCard = {
       ...card,
-      id: Date.now()
-    }
-    setCards([...cards, newCard])
-    setCard({title: '', condition: ''})
-  }
-
-  
-
+      id: Date.now(),
+    };
+    create(newCard, el);
+    setCard({ title: '', condition: '' });
+  };
 
   return (
     <div className=" min-w-[17em] max-w-fit h-fit bg-black/5 pt-2 pb-1 pl-2 pr-1 rounded-sm text-black/60 flex-col items-center shadow-md ">
       <div className="flex justify-between items-center pl-2 pr-0">
-        <h1 className=" text-black font-medium">{props.lists.title}</h1>
+        <h1 className=" text-black font-medium">{el.title}</h1>
         <div className="p-1 rounded-md hover:bg-gray-200  hover:cursor-pointer">
-          <GoKebabVertical onClick={() => props.remove(props.lists)} />
+          <GoKebabVertical onClick={() => remove(el)} />
         </div>
       </div>
 
-      {cards.map((el) => 
-        <MainCardItem key={el.id} title={el.title}/>
-      )}
+      {el.cards.map((smth) => (
+        <MainCardItem
+          key={smth.id}
+          title={smth.title}
+          condition={smth.condition}
+          changeCondition={setCard}
+          removeCard={removeCard}
+          id={smth.id}
+
+        />
+      ))}
 
       {createListCard ? (
         <div className={`w-full mt-3 rounded-sm `}>
@@ -48,18 +52,19 @@ const MainListItem = (props) => {
             className=" w-full shadow-md h-14 outline-none px-2 py-1 text-sm rounded-sm mb-1 resize-none"
             placeholder="Enter the name of this card"
             value={card.title}
-            onChange={e => setCard({...card, title: e.target.value})}
+            onChange={(e) => setCard({ ...card, title: e.target.value })}
           />
           <div className="flex gap-2 ">
-            <button className="bg-blue-500 text-white px-2 py-1 text-sm  font-medium rounded-sm text-black/60" onClick={createCard}>
+            <button
+              className="bg-blue-500 text-white px-2 py-1 text-sm  font-medium rounded-sm text-black/60"
+              onClick={createCard}
+            >
               Create card
             </button>
             <button>
               <AiOutlineClose
                 className={`${styles.iconShape} hover:cursor-pointer`}
-                onClick={() =>
-                  setCreateListCard((createListCard) => !createListCard)
-                }
+                onClick={() => setCreateListCard((prev) => !prev)}
               />
             </button>
           </div>
@@ -67,7 +72,7 @@ const MainListItem = (props) => {
       ) : (
         <button
           className={`${styles.searchBackLights} w-[14em] mt-3 bg-transparent text-sm hover:bg-black/5 hover:text-black/80 py-1 px-2 rounded-sm text-black/60 flex items-center gap-1`}
-          onClick={() => setCreateListCard((createListCard) => !createListCard)}
+          onClick={() => setCreateListCard((prev) => !prev)}
         >
           <AiOutlinePlus />
           Add new card

@@ -5,27 +5,23 @@ import { styles } from '../../../styles';
 import { AiOutlinePlus, AiOutlineClose } from 'react-icons/ai';
 
 const MainCardsAddButton = ({ createList, setCreateLists, createLists }) => {
-
   const [listInfo, setListInfo] = useState({
     title: '',
-    body: ''
+    cards: [],
   });
-
 
   const handlerFunc = (e) => {
     const newList = {
-        ...listInfo,
-        id: Date.now()
-    }
-    setListInfo({title: '', body: ''})
-    createList(newList)
-  }
+      ...listInfo,
+      id: Date.now(),
+    };
+    setListInfo({ title: '', cards: [] });
+    createList(newList);
+  };
 
   const closeHandler = () => {
-    setCreateLists(createLists => !createLists)
-  }
-
-
+    setCreateLists((createLists) => !createLists);
+  };
 
   return (
     <div>
@@ -34,7 +30,9 @@ const MainCardsAddButton = ({ createList, setCreateLists, createLists }) => {
           <input
             className=" w-full border-blue-500 border-2 outline-none px-2 py-1 text-sm rounded-sm mb-1"
             placeholder="List name"
-            onChange={e => setListInfo({...listInfo, title: e.target.value})}
+            onChange={(e) =>
+              setListInfo({ ...listInfo, title: e.target.value })
+            }
             value={listInfo.title}
           />
           <div className="flex gap-2 ">
@@ -58,7 +56,6 @@ const MainCardsAddButton = ({ createList, setCreateLists, createLists }) => {
           Add new list
         </button>
       )}
-      
     </div>
   );
 };
